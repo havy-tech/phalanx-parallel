@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Process;
+namespace Phalanx\Parallel\Process;
 
-use Convoy\Parallel\Protocol\Codec;
-use Convoy\Parallel\Protocol\MessageType;
-use Convoy\Parallel\Protocol\Response;
-use Convoy\Parallel\Protocol\ServiceCall;
-use Convoy\Parallel\Protocol\TaskRequest;
+use Phalanx\Parallel\Protocol\Codec;
+use Phalanx\Parallel\Protocol\MessageType;
+use Phalanx\Parallel\Protocol\Response;
+use Phalanx\Parallel\Protocol\ServiceCall;
+use Phalanx\Parallel\Protocol\TaskRequest;
 use React\ChildProcess\Process;
 use React\EventLoop\LoopInterface;
 use React\EventLoop\TimerInterface;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Process;
+namespace Phalanx\Parallel\Process;
 
 final readonly class ProcessConfig
 {
@@ -25,9 +25,9 @@ final readonly class ProcessConfig
     private static function findWorkerScript(): string
     {
         $candidates = [
-            dirname(__DIR__, 2) . '/bin/convoy-worker',
-            dirname(__DIR__, 4) . '/bin/convoy-worker',
-            dirname(__DIR__, 5) . '/bin/convoy-worker',
+            dirname(__DIR__, 2) . '/bin/phalanx-worker',
+            dirname(__DIR__, 4) . '/bin/phalanx-worker',
+            dirname(__DIR__, 5) . '/bin/phalanx-worker',
         ];
 
         foreach ($candidates as $path) {

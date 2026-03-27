@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Runtime;
+namespace Phalanx\Parallel\Runtime;
 
 final class ServiceProxy
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Dispatch;
+namespace Phalanx\Parallel\Dispatch;
 
-use Convoy\Parallel\Agent\AgentState;
-use Convoy\Parallel\Agent\Worker;
-use Convoy\Parallel\Protocol\TaskRequest;
+use Phalanx\Parallel\Agent\AgentState;
+use Phalanx\Parallel\Agent\Worker;
+use Phalanx\Parallel\Protocol\TaskRequest;
 use React\Promise\PromiseInterface;
 
 use function React\Promise\reject;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Agent;
+namespace Phalanx\Parallel\Agent;
 
-use Convoy\Parallel\Protocol\TaskRequest;
+use Phalanx\Parallel\Protocol\TaskRequest;
 use React\Promise\Deferred;
 use SplQueue;
 

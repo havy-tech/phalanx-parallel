@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Supervisor;
+namespace Phalanx\Parallel\Supervisor;
 
-use Convoy\Parallel\Agent\AgentState;
-use Convoy\Parallel\Agent\Worker;
-use Convoy\Parallel\Dispatch\Dispatcher;
-use Convoy\Parallel\Dispatch\DispatchStrategy;
-use Convoy\Parallel\Dispatch\LeastMailboxDispatcher;
-use Convoy\Parallel\Dispatch\RoundRobinDispatcher;
-use Convoy\Parallel\Process\ProcessConfig;
-use Convoy\Parallel\Protocol\ServiceCall;
-use Convoy\Parallel\Runtime\ParentServiceProxy;
-use Convoy\Service\LazySingleton;
-use Convoy\Service\ServiceGraph;
+use Phalanx\Parallel\Agent\AgentState;
+use Phalanx\Parallel\Agent\Worker;
+use Phalanx\Parallel\Dispatch\Dispatcher;
+use Phalanx\Parallel\Dispatch\DispatchStrategy;
+use Phalanx\Parallel\Dispatch\LeastMailboxDispatcher;
+use Phalanx\Parallel\Dispatch\RoundRobinDispatcher;
+use Phalanx\Parallel\Process\ProcessConfig;
+use Phalanx\Parallel\Protocol\ServiceCall;
+use Phalanx\Parallel\Runtime\ParentServiceProxy;
+use Phalanx\Service\LazySingleton;
+use Phalanx\Service\ServiceGraph;
 use React\EventLoop\LoopInterface;
 use React\EventLoop\TimerInterface;
 use React\Promise\PromiseInterface;

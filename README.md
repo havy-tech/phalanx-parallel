@@ -1,4 +1,4 @@
-# Convoy Parallel
+# Phalanx Parallel
 
 Offload CPU-heavy work to supervised child processes. Tasks serialize, cross process boundaries via IPC, execute in isolated workers, and return results--all through a single `$scope->inWorker()` call.
 
@@ -16,7 +16,7 @@ Offload CPU-heavy work to supervised child processes. Tasks serialize, cross pro
 ## Installation
 
 ```bash
-composer require convoy/parallel
+composer require phalanx/parallel
 ```
 
 Requires PHP 8.4+ and `ext-pcntl`.
@@ -26,8 +26,8 @@ Requires PHP 8.4+ and `ext-pcntl`.
 ```php
 <?php
 
-use Convoy\Application;
-use Convoy\Parallel\ParallelConfig;
+use Phalanx\Application;
+use Phalanx\Parallel\ParallelConfig;
 
 $app = Application::starting()
     ->withWorkerDispatch(ParallelConfig::default()->workerDispatchFactory())
@@ -94,7 +94,7 @@ $scope->inWorker(new CompressVideo($file3));   // queued -- all executing in par
 ```php
 <?php
 
-use Convoy\Parallel\ParallelConfig;
+use Phalanx\Parallel\ParallelConfig;
 
 // 4 workers, least-mailbox dispatch, restart on crash
 ParallelConfig::default();
@@ -137,7 +137,7 @@ Two built-in strategies determine which worker receives the next task:
 ```php
 <?php
 
-use Convoy\Parallel\Dispatch\DispatchStrategy;
+use Phalanx\Parallel\Dispatch\DispatchStrategy;
 
 new ParallelConfig(
     agents: 4,

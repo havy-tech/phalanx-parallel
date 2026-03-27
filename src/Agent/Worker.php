@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Agent;
+namespace Phalanx\Parallel\Agent;
 
-use Convoy\Parallel\Process\ProcessConfig;
-use Convoy\Parallel\Process\ProcessHandle;
-use Convoy\Parallel\Process\ProcessState;
-use Convoy\Parallel\Protocol\ServiceCall;
-use Convoy\Parallel\Protocol\TaskRequest;
+use Phalanx\Parallel\Process\ProcessConfig;
+use Phalanx\Parallel\Process\ProcessHandle;
+use Phalanx\Parallel\Process\ProcessState;
+use Phalanx\Parallel\Protocol\ServiceCall;
+use Phalanx\Parallel\Protocol\TaskRequest;
 use React\EventLoop\LoopInterface;
 use React\EventLoop\TimerInterface;
 use React\Promise\Deferred;
