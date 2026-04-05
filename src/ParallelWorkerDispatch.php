@@ -20,8 +20,6 @@ use Phalanx\WorkerDispatch;
 use React\EventLoop\Loop;
 use ReflectionClass;
 
-use function React\Async\await;
-
 final class ParallelWorkerDispatch implements WorkerDispatch
 {
     private ?WorkerSupervisor $supervisor = null;
@@ -31,6 +29,12 @@ final class ParallelWorkerDispatch implements WorkerDispatch
         private readonly ServiceGraph $graph,
         private readonly LazySingleton $singletons,
     ) {
+    }
+
+    public function shutdown(): void
+    {
+        $this->supervisor?->shutdown();
+        $this->supervisor = null;
     }
 
     public function inWorker(Scopeable|Executable $task, ExecutionScope $scope): mixed
@@ -47,7 +51,7 @@ final class ParallelWorkerDispatch implements WorkerDispatch
         $promise = $dispatcher->dispatch($request);
 
         try {
-            $result = await($promise);
+            $result = $scope->await($promise);
             $elapsed = (hrtime(true) - $start) / 1e6;
             $scope->trace()->log(TraceType::Done, "worker:$name", ['elapsed' => $elapsed]);
             return $result;
@@ -76,10 +80,6 @@ final class ParallelWorkerDispatch implements WorkerDispatch
 
         $this->supervisor = $supervisor;
         $supervisor->start();
-
-        $scope->onDispose(static function () use ($supervisor): void {
-            $supervisor->shutdown();
-        });
 
         return $supervisor->dispatcher();
     }
