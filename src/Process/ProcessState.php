@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Process;
+namespace Phalanx\Parallel\Process;
 
 enum ProcessState
 {

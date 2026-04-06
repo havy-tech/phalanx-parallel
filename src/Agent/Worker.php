@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Agent;
+namespace Phalanx\Parallel\Agent;
 
-use Convoy\Parallel\Process\ProcessConfig;
-use Convoy\Parallel\Process\ProcessHandle;
-use Convoy\Parallel\Process\ProcessState;
-use Convoy\Parallel\Protocol\ServiceCall;
-use Convoy\Parallel\Protocol\TaskRequest;
+use Phalanx\Parallel\Process\ProcessConfig;
+use Phalanx\Parallel\Process\ProcessHandle;
+use Phalanx\Parallel\Process\ProcessState;
+use Phalanx\Parallel\Protocol\ServiceCall;
+use Phalanx\Parallel\Protocol\TaskRequest;
 use React\EventLoop\LoopInterface;
 use React\EventLoop\TimerInterface;
 use React\Promise\Deferred;
@@ -94,6 +94,9 @@ final class Worker
 
         $deferred = new Deferred();
 
+        // Non-static: reads mutable $this->state, $this->mailbox, $this->process.
+        // Cycle is bounded -- drainPollTimer is cancelled in cancelDrainPoll(), which
+        // is called from kill() and onCrash() before those paths release $this.
         $poll = function () use ($deferred): void {
             if ($this->state === AgentState::Crashed) {
                 $this->cancelDrainPoll();
@@ -149,6 +152,8 @@ final class Worker
         }
 
         $this->tickScheduled = true;
+        // Non-static: reads and writes mutable $this->tickScheduled, calls $this->tick().
+        // Cycle is ephemeral -- futureTick fires once and releases the closure immediately.
         $this->loop->futureTick(function (): void {
             $this->tickScheduled = false;
             $this->tick();
@@ -178,6 +183,8 @@ final class Worker
 
         [$task, $deferred] = $this->mailbox->dequeue();
 
+        // Non-static: calls $this->onTaskComplete() and $this->onCrash().
+        // Cycle is bounded -- both callbacks fire exactly once when the task resolves or rejects.
         $this->process->execute($task)->then(
             function (mixed $result) use ($deferred): void {
                 $deferred->resolve($result);

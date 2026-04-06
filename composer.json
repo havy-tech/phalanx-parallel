@@ -1,6 +1,6 @@
 {
-    "name": "convoy/parallel",
-    "description": "Worker process parallelism for Convoy",
+    "name": "phalanx/parallel",
+    "description": "Worker process parallelism for Phalanx",
     "license": "MIT",
     "type": "library",
     "keywords": ["parallel", "worker", "process", "async", "ipc", "reactphp"],
@@ -10,10 +10,10 @@
             "email": "mail@jhavens.tech"
         }
     ],
-    "homepage": "https://github.com/havy-tech/convoy-parallel",
+    "homepage": "https://github.com/havy-tech/phalanx-parallel",
     "require": {
         "php": "^8.4",
-        "convoy/core": "^1.0",
+        "phalanx/core": "^0.5",
         "react/child-process": "^0.6",
         "react/async": "^4.3",
         "react/event-loop": "^1.5",
@@ -21,20 +21,20 @@
     },
     "autoload": {
         "psr-4": {
-            "Convoy\\Parallel\\": "src/"
+            "Phalanx\\Parallel\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Convoy\\Parallel\\Tests\\": "tests/"
+            "Phalanx\\Parallel\\Tests\\": "tests/"
         }
     },
     "bin": [
-        "bin/convoy-worker"
+        "bin/phalanx-worker"
     ],
     "extra": {
         "branch-alias": {
-            "dev-main": "1.0-dev"
+            "dev-main": "0.5-dev"
         }
     },
     "minimum-stability": "dev",

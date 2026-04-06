@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Supervisor;
+namespace Phalanx\Parallel\Supervisor;
 
 enum SupervisorStrategy
 {

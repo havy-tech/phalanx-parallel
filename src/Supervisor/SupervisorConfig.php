@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Supervisor;
+namespace Phalanx\Parallel\Supervisor;
 
-use Convoy\Parallel\Dispatch\DispatchStrategy;
+use Phalanx\Parallel\Dispatch\DispatchStrategy;
 
 final readonly class SupervisorConfig
 {

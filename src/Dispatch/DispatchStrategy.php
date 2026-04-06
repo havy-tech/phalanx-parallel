@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Dispatch;
+namespace Phalanx\Parallel\Dispatch;
 
 enum DispatchStrategy
 {

@@ -2,17 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel\Runtime;
+namespace Phalanx\Parallel\Runtime;
 
 final class ServiceProxy
 {
-    /**
-     * @param resource $stdin
-     * @param resource $stdout
-     */
-    public function __construct(private readonly string $serviceClass, private $stdin, private $stdout, private readonly WorkerScope $scope)
-    {
-    }
+    public function __construct(
+        private readonly string $serviceClass,
+        private readonly WorkerScope $scope,
+    ) {}
 
     public function __call(string $method, array $args): mixed
     {

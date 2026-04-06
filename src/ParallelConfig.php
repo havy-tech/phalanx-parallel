@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Convoy\Parallel;
+namespace Phalanx\Parallel;
 
 use Closure;
-use Convoy\Parallel\Dispatch\DispatchStrategy;
-use Convoy\Parallel\Supervisor\SupervisorConfig;
-use Convoy\Parallel\Supervisor\SupervisorStrategy;
-use Convoy\Service\LazySingleton;
-use Convoy\Service\ServiceGraph;
-use Convoy\WorkerDispatch;
+use Phalanx\Parallel\Dispatch\DispatchStrategy;
+use Phalanx\Parallel\Supervisor\SupervisorConfig;
+use Phalanx\Parallel\Supervisor\SupervisorStrategy;
+use Phalanx\Service\LazySingleton;
+use Phalanx\Service\ServiceGraph;
+use Phalanx\WorkerDispatch;
 
 final readonly class ParallelConfig
 {
