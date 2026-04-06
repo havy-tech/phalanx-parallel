@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel\Runtime;
+namespace Convoy\Parallel\Runtime;
 
-use Phalanx\Parallel\Protocol\ServiceCall;
-use Phalanx\Service\LazySingleton;
-use Phalanx\Service\ServiceGraph;
+use Convoy\Parallel\Protocol\ServiceCall;
+use Convoy\Service\LazySingleton;
+use Convoy\Service\ServiceGraph;
 use React\Promise\PromiseInterface;
 
 use function React\Promise\reject;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel\Agent;
+namespace Convoy\Parallel\Agent;
 
-use Phalanx\Parallel\Process\ProcessConfig;
+use Convoy\Parallel\Process\ProcessConfig;
 use React\EventLoop\LoopInterface;
 
 final class WorkerFactory

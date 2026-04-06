@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel\Tests\Integration;
+namespace Convoy\Parallel\Tests\Integration;
 
-use Phalanx\Application;
-use Phalanx\ExecutionScope;
-use Phalanx\Parallel\ParallelConfig;
-use Phalanx\Task\Task;
-use Phalanx\Tests\Support\AsyncTestCase;
-use Phalanx\Tests\Support\Fixtures\AddNumbers;
-use Phalanx\Tests\Support\Fixtures\CpuIntensiveTask;
-use Phalanx\Tests\Support\Fixtures\TaskThatThrows;
-use Phalanx\Tests\Support\TestServiceBundle;
+use Convoy\Application;
+use Convoy\ExecutionScope;
+use Convoy\Parallel\ParallelConfig;
+use Convoy\Task\Task;
+use Convoy\Tests\Support\AsyncTestCase;
+use Convoy\Tests\Support\Fixtures\AddNumbers;
+use Convoy\Tests\Support\Fixtures\CpuIntensiveTask;
+use Convoy\Tests\Support\Fixtures\TaskThatThrows;
+use Convoy\Tests\Support\TestServiceBundle;
 use PHPUnit\Framework\Attributes\Test;
 
 final class InWorkerTest extends AsyncTestCase

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel\Runtime;
+namespace Convoy\Parallel\Runtime;
 
-use Phalanx\Parallel\Protocol\Codec;
-use Phalanx\Parallel\Protocol\Response;
-use Phalanx\Parallel\Protocol\ServiceCall;
-use Phalanx\Scope;
-use Phalanx\Trace\Trace;
+use Convoy\Parallel\Protocol\Codec;
+use Convoy\Parallel\Protocol\Response;
+use Convoy\Parallel\Protocol\ServiceCall;
+use Convoy\Scope;
+use Convoy\Trace\Trace;
 
 final class WorkerScope implements Scope
 {
@@ -48,7 +48,7 @@ final class WorkerScope implements Scope
             throw new \RuntimeException($response->errorMessage ?? "Failed to resolve service: $type");
         }
 
-        return new ServiceProxy($type, $this);
+        return new ServiceProxy($type, $this->stdin, $this->stdout, $this);
     }
 
     public function attribute(string $key, mixed $default = null): mixed

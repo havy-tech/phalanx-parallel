@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel\Tests\Unit\Protocol;
+namespace Convoy\Parallel\Tests\Unit\Protocol;
 
-use Phalanx\Parallel\Protocol\Codec;
-use Phalanx\Parallel\Protocol\InvalidMessageException;
-use Phalanx\Parallel\Protocol\MessageType;
-use Phalanx\Parallel\Protocol\Response;
-use Phalanx\Parallel\Protocol\ServiceCall;
-use Phalanx\Parallel\Protocol\TaskRequest;
+use Convoy\Parallel\Protocol\Codec;
+use Convoy\Parallel\Protocol\InvalidMessageException;
+use Convoy\Parallel\Protocol\MessageType;
+use Convoy\Parallel\Protocol\Response;
+use Convoy\Parallel\Protocol\ServiceCall;
+use Convoy\Parallel\Protocol\TaskRequest;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 

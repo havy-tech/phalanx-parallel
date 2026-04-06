@@ -2,23 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel;
+namespace Convoy\Parallel;
 
-use Phalanx\ExecutionScope;
-use Phalanx\Parallel\Dispatch\Dispatcher;
-use Phalanx\Parallel\Process\ProcessConfig;
-use Phalanx\Parallel\Protocol\TaskRequest;
-use Phalanx\Parallel\Supervisor\WorkerSupervisor;
-use Phalanx\Service\LazySingleton;
-use Phalanx\Service\ServiceGraph;
-use Phalanx\Support\ClassNames;
-use Phalanx\Task\Executable;
-use Phalanx\Task\Scopeable;
-use Phalanx\Task\Traceable;
-use Phalanx\Trace\TraceType;
-use Phalanx\WorkerDispatch;
+use Convoy\ExecutionScope;
+use Convoy\Parallel\Dispatch\Dispatcher;
+use Convoy\Parallel\Process\ProcessConfig;
+use Convoy\Parallel\Protocol\TaskRequest;
+use Convoy\Parallel\Supervisor\WorkerSupervisor;
+use Convoy\Service\LazySingleton;
+use Convoy\Service\ServiceGraph;
+use Convoy\Support\ClassNames;
+use Convoy\Task\Executable;
+use Convoy\Task\Scopeable;
+use Convoy\Task\Traceable;
+use Convoy\Trace\TraceType;
+use Convoy\WorkerDispatch;
 use React\EventLoop\Loop;
 use ReflectionClass;
+
+use function React\Async\await;
 
 final class ParallelWorkerDispatch implements WorkerDispatch
 {
@@ -29,12 +31,6 @@ final class ParallelWorkerDispatch implements WorkerDispatch
         private readonly ServiceGraph $graph,
         private readonly LazySingleton $singletons,
     ) {
-    }
-
-    public function shutdown(): void
-    {
-        $this->supervisor?->shutdown();
-        $this->supervisor = null;
     }
 
     public function inWorker(Scopeable|Executable $task, ExecutionScope $scope): mixed
@@ -51,7 +47,7 @@ final class ParallelWorkerDispatch implements WorkerDispatch
         $promise = $dispatcher->dispatch($request);
 
         try {
-            $result = $scope->await($promise);
+            $result = await($promise);
             $elapsed = (hrtime(true) - $start) / 1e6;
             $scope->trace()->log(TraceType::Done, "worker:$name", ['elapsed' => $elapsed]);
             return $result;
@@ -80,6 +76,10 @@ final class ParallelWorkerDispatch implements WorkerDispatch
 
         $this->supervisor = $supervisor;
         $supervisor->start();
+
+        $scope->onDispose(static function () use ($supervisor): void {
+            $supervisor->shutdown();
+        });
 
         return $supervisor->dispatcher();
     }

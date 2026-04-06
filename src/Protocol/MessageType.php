@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel\Protocol;
+namespace Convoy\Parallel\Protocol;
 
 enum MessageType: string
 {

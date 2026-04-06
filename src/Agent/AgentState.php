@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel\Agent;
+namespace Convoy\Parallel\Agent;
 
 enum AgentState
 {

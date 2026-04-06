@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel\Runtime;
+namespace Convoy\Parallel\Runtime;
 
-use Phalanx\Parallel\Protocol\Codec;
-use Phalanx\Parallel\Protocol\MessageType;
-use Phalanx\Parallel\Protocol\Response;
-use Phalanx\Parallel\Protocol\TaskRequest;
-use Phalanx\Task\Executable;
-use Phalanx\Task\Scopeable;
-use Phalanx\Trace\Trace;
+use Convoy\Parallel\Protocol\Codec;
+use Convoy\Parallel\Protocol\MessageType;
+use Convoy\Parallel\Protocol\Response;
+use Convoy\Parallel\Protocol\TaskRequest;
+use Convoy\Task\Executable;
+use Convoy\Task\Scopeable;
+use Convoy\Trace\Trace;
 use ReflectionClass;
 use ReflectionParameter;
 

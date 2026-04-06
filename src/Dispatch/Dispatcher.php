@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Phalanx\Parallel\Dispatch;
+namespace Convoy\Parallel\Dispatch;
 
-use Phalanx\Parallel\Protocol\TaskRequest;
+use Convoy\Parallel\Protocol\TaskRequest;
 use React\Promise\PromiseInterface;
 
 interface Dispatcher
